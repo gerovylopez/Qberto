@@ -7,8 +7,8 @@ public class playe_beta : MonoBehaviour
 
     public Vector3  dir;
     
-    float X = (float)Math.Sqrt(2)/2;
-    float Y = (float)(Math.Sqrt(2)*Math.Tan(30*Mathf.Deg2Rad))/2;
+    public float X = (float)Math.Sqrt(2)/2;     
+    public float Y = (float)(Math.Sqrt(2)*Math.Tan(30*Mathf.Deg2Rad))/2; //tan(pi/6)*2^0.5)*1.5
     //float Z = (float)Math.Tan(30*Mathf.Deg2Rad))/2;
     
 
@@ -43,9 +43,16 @@ public class playe_beta : MonoBehaviour
             dir.z=0;
 
        transform.Translate(dir, Space.World );
+       
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("esta on fire");
+        if(other.CompareTag("Casilla"))
+            Debug.Log("esta on ice");
     }
     //malla
-    
 
-    
+
+
 }
