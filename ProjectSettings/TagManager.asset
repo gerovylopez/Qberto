@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Casilla
+  - Enemy
+  - Dona
+  - Outside
+  - Enemyv
   layers:
   - Default
   - TransparentFX
