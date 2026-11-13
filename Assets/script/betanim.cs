@@ -7,6 +7,7 @@ public class betanim : MonoBehaviour
     float j = 0;
     float i = 0;
     float x = 10;
+    float y = 10;
     void Start()
     {
         
@@ -15,14 +16,17 @@ public class betanim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         if (Input.GetKeyDown(KeyCode.J)){
-            while (j<120){
-                i = j*Mathf.Deg2Rad;
-                transform.position= new Vector3((float)Math.Sin(i)+x, (float) Math.Cos(i)+x, -1);
-                j++;
-            }
-                j=0;
-         }
+        
+        i = j*Mathf.Deg2Rad;
+        transform.position= new Vector3(-(float)Math.Sin(i)+x, (float) Math.Cos(i)+x, -1);
+        j++;
+        if (j>120)
+            j=120;
+        if (Input.GetKeyDown(KeyCode.J)){
+            j=0;
+            x=transform.position.x;
+            y=transform.position.y;
+        }
         
     }
 }

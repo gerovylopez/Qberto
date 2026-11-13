@@ -41,9 +41,12 @@ public class enemy_beta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transform.position.y< GameObject.FindGameObjectWithTag("Camera").transform.position.y- 10)
+            Destroy(gameObject);
+        
         if(!esp)
             {
-            if (Player.transform.position.y > transform.position.y){
+                if (Player.transform.position.y > transform.position.y){
                 dir.y = 3*Y;
 //                if(skins[3])
 //                    sptrender.sprite = skins[3];
@@ -69,7 +72,7 @@ public class enemy_beta : MonoBehaviour
                 dir.y = 0;
                 dir.x = 0;
             }*/
- 
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

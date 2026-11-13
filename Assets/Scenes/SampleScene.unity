@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 93865833}
   m_Layer: 0
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Checkpoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,7 +218,7 @@ Transform:
   m_GameObject: {fileID: 93865829}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.53999, y: 8.43339, z: 0}
+  m_LocalPosition: {x: 10.86602, y: 9.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -353,7 +353,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -378,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6, z: -10}
+  m_LocalPosition: {x: 0, y: -200, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -434,9 +434,11 @@ MonoBehaviour:
   Donut: {fileID: 922594686142290436, guid: 019647fcd6e0e0e41808a65e11d4b17c, type: 3}
   Beer: {fileID: 0}
   Armor: {fileID: 0}
+  Checkpoint: {fileID: 5422314051750014366, guid: fbbd4bbfd51662643ba94c3e5e98777d, type: 3}
   X: 0.70710677
   Y: 0.4082483
   cantidadfilas: 20
+  Camara: {fileID: 519420028}
   sec: 10
 --- !u!4 &1002015572
 Transform:
@@ -464,6 +466,10 @@ PrefabInstance:
     - target: {fileID: 579271650513557306, guid: 1f6e43c480d44dc459cd909bf5c81218, type: 3}
       propertyPath: Y
       value: -0.8164966
+      objectReference: {fileID: 0}
+    - target: {fileID: 579271650513557306, guid: 1f6e43c480d44dc459cd909bf5c81218, type: 3}
+      propertyPath: start
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 860092620024433853, guid: 1f6e43c480d44dc459cd909bf5c81218, type: 3}
       propertyPath: m_LocalPosition.x

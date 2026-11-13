@@ -118,6 +118,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   dir: {x: 0, y: 0}
+  checkpoint: {x: 0, y: 0}
   Vista: 0
   X: 0.70710677
   Y: 0.4082483
@@ -147,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 5142184043245575752}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: -1}
   m_LocalScale: {x: 1, y: 0.7578, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -238,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 8691954321563318415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

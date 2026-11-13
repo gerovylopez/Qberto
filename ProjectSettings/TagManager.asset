@@ -9,6 +9,8 @@ TagManager:
   - Dona
   - Outside
   - Enemyv
+  - Camera
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

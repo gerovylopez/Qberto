@@ -108,7 +108,6 @@ public class enemy2_beta : MonoBehaviour
         yield return new WaitForSeconds(segundos);
         if(!(rectaM(Player.transform.position ,transform.position) && viendo(PlayerCod.Vista, Player.transform.position, transform.position)))
             transform.Translate(dir, Space.World );
-           
         esp = false;
     }
     

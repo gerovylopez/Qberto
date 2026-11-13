@@ -8,13 +8,13 @@ public class Camera : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
         playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        transform.position = new Vector3(playerPos.x, playerPos.y, -3);
+        if(playerPos.y > transform.position.y)
+            transform.Translate(0, playerPos.y-transform.position.y,0);
     }
 }
