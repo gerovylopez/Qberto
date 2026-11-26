@@ -12,6 +12,7 @@ public class fabricgame : MonoBehaviour
 
     public GameObject Casilla;
     public GameObject Finish;
+    public GameObject Arbol;
     public GameObject Player;
     public GameObject Enemy1;
     public GameObject Enemy2;
@@ -41,39 +42,43 @@ public class fabricgame : MonoBehaviour
                 j=-i;
             else
                 j=-20;
-            Instantiate(Finish, new Vector3((j-1)*X*1, -i*3*Y, 0), Quaternion.identity);
+            Instantiate(Finish, new Vector3((j-1)*X*1, -i*3*Y, 1), Quaternion.identity);
             while(j < i && j < 21)
             {
                 if (i%2==0&& math.abs(j%2)==1)
-                    if ( math.abs(j%2)==Random.Range(0,20)%2)
-                        Instantiate(Finish, new Vector3(j*X*1, -i*3*Y, 0), Quaternion.identity);
+                    if ( math.abs(j%2)==Random.Range(0,20)%2 && i < cantidadfilas-3)
+                        Instantiate(Arbol, new Vector3(j*X*1, -i*3*Y, 1), Quaternion.identity);
                     else
-                        Instantiate(Casilla, new Vector3(j*X*1, -i*3*Y, 0), Quaternion.identity);
+                        Instantiate(Casilla, new Vector3(j*X*1, -i*3*Y, 2), Quaternion.identity);
                 else if(i%2==1&&j%2==0)
-                    Instantiate(Casilla, new Vector3(j*X*1, -i*3*Y, 0), Quaternion.identity);
+                    Instantiate(Casilla, new Vector3(j*X*1, -i*3*Y, 2), Quaternion.identity);
             j++;
             }
-            Instantiate(Finish, new Vector3((j+1)*X*1, -i*3*Y, 0), Quaternion.identity);
+            if (j<21)
+                Instantiate(Finish, new Vector3((j+1)*X*1, -i*3*Y, 1), Quaternion.identity);
+            else
+                Instantiate(Finish, new Vector3(j*X*1, -i*3*Y, 1), Quaternion.identity);
+           
             i++;
         }
         if(i<20)
             j=-i;
         else
             j=-20;
-        Instantiate(Finish, new Vector3((j-1)*X*1, -i*3*Y, 0), Quaternion.identity);
+        Instantiate(Arbol, new Vector3((j-1)*X*1, -i*3*Y, 1), Quaternion.identity);
         while(j < i && j < 21)
         {
             if (i%2==0&& math.abs(j%2)==1)
-                Instantiate(Finish, new Vector3(j*X*1, -i*3*Y, 0), Quaternion.identity);
+                Instantiate(Arbol, new Vector3(j*X*1, -i*3*Y, 1), Quaternion.identity);
             else if(i%2==1&&j%2==0)
-                Instantiate(Finish, new Vector3(j*X*1, -i*3*Y, 0), Quaternion.identity);
+                Instantiate(Arbol, new Vector3(j*X*1, -i*3*Y, 1), Quaternion.identity);
             j++;
         }
-        Instantiate(Finish, new Vector3((j+1)*X*1, -i*3*Y, 0), Quaternion.identity);
+        Instantiate(Arbol, new Vector3(j*X*1, -i*3*Y, 1), Quaternion.identity);
         j--;
-        Instantiate(Player, new Vector3((j-2)*X+X, -(i-2)*3*Y, -1), Quaternion.identity);
+        Instantiate(Player, new Vector3((j-5)*X, -(i-3)*3*Y, -1), Quaternion.identity);
         //Camara = GameObject.FindGameObjectWithTag("Camera");
-        Camara.transform.position = new Vector3(0,  -(i-8)*3*Y, -3);
+        Camara.transform.position = new Vector3(0,  -(i-1)*3*Y, -5);
     }
     bool donut = true;
     public  int sec = 10;
@@ -86,11 +91,28 @@ public class fabricgame : MonoBehaviour
             Vector2 Cass = randomCass();
             Instantiate(Enemy1, new Vector3(Cass.x, Cass.y + Y, -1), Quaternion.identity);
         }
-        
-        if(GameObject.FindGameObjectsWithTag("Checkpoint").Length < cantidadfilas/20 +1){
+        if(GameObject.FindGameObjectsWithTag("Enemy").Length < cantidadfilas/20){
             Vector2 Cass = randomCass();
-            Instantiate(Checkpoint, new Vector3(Cass.x, Cass.y + Y, -1), Quaternion.identity);
-            Debug.Log("miua");
+            Instantiate(Enemy2, new Vector3(Cass.x, Cass.y + Y, -1), Quaternion.identity);
+        }
+        if(GameObject.FindGameObjectsWithTag("Enemyv").Length < cantidadfilas/20){
+            Vector2 Cass = randomCass();
+            int sig = 1-(Random.Range(0,1)*2);
+            Instantiate(EnemyV, new Vector3(sig*15, Cass.y + Y, -1), Quaternion.identity);
+        }
+        
+        if( GameObject.FindGameObjectsWithTag("Checkpoint").Length < cantidadfilas/20){
+            GameObject[] Cassillas = GameObject.FindGameObjectsWithTag("Casilla");
+            Vector2 Cass = Cassillas[Cassillas.Length /(10*(GameObject.FindGameObjectsWithTag("Checkpoint").Length+1))*10].transform.position;
+            Instantiate(Checkpoint, new Vector3(Cass.x, Cass.y + 2*Y, -1), Quaternion.identity);
+        }
+        if(GameObject.FindGameObjectsWithTag("DUFF").Length < cantidadfilas/20 +1){
+            Vector2 Cass = randomCass();
+            Instantiate(Beer, new Vector3(Cass.x, Cass.y, -1), Quaternion.identity);
+        }
+        if(GameObject.FindGameObjectsWithTag("Barril").Length < cantidadfilas/20 +1){
+            Vector2 Cass = randomCass();
+            Instantiate(Armor, new Vector3(Cass.x, Cass.y, -1), Quaternion.identity);
         }
     }
     IEnumerator MonedaCadaXSeg(float segundos)

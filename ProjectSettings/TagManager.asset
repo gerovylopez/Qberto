@@ -11,6 +11,8 @@ TagManager:
   - Enemyv
   - Camera
   - Checkpoint
+  - DUFF
+  - Barril
   layers:
   - Default
   - TransparentFX

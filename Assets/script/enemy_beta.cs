@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
@@ -32,7 +33,7 @@ public class enemy_beta : MonoBehaviour
     void Start()
     {
         sptrender = GetComponent<SpriteRenderer>();
-        Player    = GameObject.FindGameObjectWithTag("Player");
+       
         //transform.position = new Vector3(start.x * X + X, start.y*3*Y -Y*.5f, -1);
     }
 
@@ -41,15 +42,19 @@ public class enemy_beta : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameObject.FindGameObjectWithTag("Player"))
+            Player = GameObject.FindGameObjectWithTag("Player");
+        else
+            Player = GameObject.FindGameObjectsWithTag("Casilla")[0];
         if (transform.position.y< GameObject.FindGameObjectWithTag("Camera").transform.position.y- 10)
             Destroy(gameObject);
         
         if(!esp)
             {
-                if (Player.transform.position.y > transform.position.y){
+            if (Player.transform.position.y > transform.position.y){
                 dir.y = 3*Y;
-//                if(skins[3])
-//                    sptrender.sprite = skins[3];
+//              if(skins[3])
+//                  sptrender.sprite = skins[3];
             }
             else if (Player.transform.position.y <= transform.position.y){
                 dir.y = -3*Y;
@@ -58,13 +63,17 @@ public class enemy_beta : MonoBehaviour
             }
             if (Player.transform.position.x > transform.position.x){
                 dir.x = X;
-//                if(skins[2])
-//                    sptrender.sprite = skins[2];
+                if(skins.Length>0 && skins[0])
+                    sptrender.sprite = skins[0];
+                else
+                    transform.rotation = new quaternion (0, 0, 0 ,0);
             }
             else if (Player.transform.position.x <= transform.position.x){
                 dir.x = -X;
-//                if(skins[1])
-//                    sptrender.sprite = skins[1];
+                if(skins.Length>0 && skins[1])        
+                    sptrender.sprite = skins[1];
+                else
+                    transform.rotation = new quaternion (0, 180, 0 ,0);
             }
         StartCoroutine(EsperarSegundos(time));
         }
